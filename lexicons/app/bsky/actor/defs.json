@@ -105,7 +105,8 @@
           "#personalDetailsPref",
           "#feedViewPref",
           "#threadViewPref",
-          "#interestsPref"
+          "#interestsPref",
+          "#muteWordPref"
         ]
       }
     },
@@ -210,6 +211,36 @@
           "maxLength": 100,
           "items": { "type": "string", "maxLength": 640, "maxGraphemes": 64 },
           "description": "A list of tags which describe the account owner's interests gathered during onboarding."
+        }
+      }
+    },
+    "muteWordPref": {
+      "type": "object",
+      "required": ["keyword", "behavior"],
+      "properties": {
+        "keyword": {
+          "type": "string",
+          "maxLength": 640,
+          "maxGraphemes": 64,
+          "description": "A keyword to mute."
+        },
+        "hideInPosts": {
+          "type": "boolean",
+          "description": "Hide posts containing this keyword in the feed."
+        },
+        "hideInDisplayName": {
+          "type": "boolean",
+          "description": "Hide posts containing this keyword in the display name."
+        },
+        "behavior": {
+          "type": "string",
+          "description": "The behavior to take when a post contains this keyword.",
+          "knownValues": ["hide", "warn"]
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "datetime",
+          "description": "The date and time at which the mute expires. If not set, the mute is permanent."
         }
       }
     }
