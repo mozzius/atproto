@@ -214,16 +214,17 @@
         }
       }
     },
-    "muteWordPref": {
+    "muteWordsPref": {
       "type": "object",
       "required": ["keyword", "behavior"],
       "properties": {
-        "keyword": {
-          "type": "string",
-          "maxLength": 640,
-          "maxGraphemes": 64,
-          "description": "A keyword to mute."
+        "keywords": {
+          "type": "array",
+          "maxLength": 100,
+          "items": { "type": "string", "maxLength": 640, "maxGraphemes": 64 },
+          "description": "A list of keywords to mute."
         },
+        "label": { "type": "string", "maxLength": 640, "maxGraphemes": 64 },
         "hideInPosts": {
           "type": "boolean",
           "description": "Hide posts containing this keyword in the feed."
@@ -235,7 +236,7 @@
         "behavior": {
           "type": "string",
           "description": "The behavior to take when a post contains this keyword.",
-          "knownValues": ["hide", "warn"]
+          "knownValues": ["show", "hide", "warn"]
         },
         "expiresAt": {
           "type": "string",
